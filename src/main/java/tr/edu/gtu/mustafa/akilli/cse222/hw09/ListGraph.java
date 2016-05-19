@@ -1,8 +1,11 @@
 package tr.edu.gtu.mustafa.akilli.cse222.hw09;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * HW09_131044017_Mustafa_Akilli
@@ -111,4 +114,108 @@ public class ListGraph extends AbstractGraph {
     private void setListOfEdges(int numberOfVertex) {
         this.edges = new LinkedList[numberOfVertex];
     }
+
+    /**
+     * Load the edges of a graph from the data in an input String.
+     *
+     * @param edgeLine for the Edge
+     */
+    public Edge loadEdgesFromString(String edgeLine){
+
+        int index; /* index for loops */
+        Edge newEdge; /* new Edge */
+        StringBuilder sourceNumber = new StringBuilder(); /* For The Source Number */
+        StringBuilder destinationNumber = new StringBuilder(); /* For The Destination Number */
+        StringBuilder weight = new StringBuilder(); /* For The Source Name */
+
+        /* Pass the until source number */
+        for (index = 0; index < edgeLine.length(); ++index) {
+            if (edgeLine.charAt(index) == 'v')
+                break;
+        }
+
+        /* Source Number */
+        for (index = index + 1 ; index < edgeLine.length(); ++index) {
+            if (edgeLine.charAt(index) != '"')
+                sourceNumber.append(edgeLine.charAt(index));
+            else
+                break;
+        }
+
+        /* Pass the until destination number */
+        for (; index < edgeLine.length(); ++index) {
+            if (edgeLine.charAt(index) == 'v')
+                break;
+        }
+
+        /* Destination Number */
+        for (index = index + 1; index < edgeLine.length(); ++index) {
+            if (edgeLine.charAt(index) != '"')
+                destinationNumber.append(edgeLine.charAt(index));
+            else
+                break;
+        }
+
+        /* Pass the until weight */
+        for (index = index+1; index < edgeLine.length(); ++index) {
+            if (edgeLine.charAt(index) == '"')
+                break;
+        }
+
+        /* Destination Number */
+        for (index = index+1; index < edgeLine.length(); ++index) {
+            if (edgeLine.charAt(index) != '"')
+                weight.append(edgeLine.charAt(index));
+            else
+                break;
+        }
+
+        System.out.println("Kendi: " + sourceNumber + "Komsu: " + destinationNumber + "Weight: " + weight + "*");
+
+        return newEdge = new Edge(Integer.parseInt(String.valueOf(sourceNumber)),
+                                Integer.parseInt(String.valueOf(destinationNumber)),
+                                    Integer.parseInt(String.valueOf(weight)));
+    }
+
+    /**
+     * Create Graph From File
+     *
+     * @param newDataFileName Data File Name
+     * @throws IllegalArgumentException if type is neither "Matrix"
+     *                                  nor "List"
+     * @throws IOException if an I/O error occurs
+     */
+    public void createGraphFromFile(String newDataFileName)  throws IOException {
+
+        File inFile = new File(newDataFileName); /* XML */
+
+        Scanner sc = new Scanner(inFile);
+        String line = sc.nextLine();/*Pass the first line */
+
+        /* Until Start of the Edges */
+        while (line.compareTo("  <Edges>") != 0) {
+            /* Take the next line */
+            line = sc.nextLine();
+        }
+
+        /* Take the next line */
+        line = sc.nextLine();
+
+        /* Until End of the Edges */
+        while (line.compareTo("  </Edges>") != 0) {
+
+            System.out.println(line);
+
+            /* Add element in the Linked List */
+            insert(loadEdgesFromString(line));
+
+            /* Take the next line */
+            line = sc.nextLine();
+        }
+
+        /* Close the file */
+        sc.close();
+    }
+
+
 }

@@ -29,15 +29,4 @@ public interface Graph {
      */
     public boolean isDirected();
 
-    // Other Methods
-    /**
-     * Load the edges of a graph from the data in an input file.
-     * The file should contain a series of lines, each line
-     * with two or three data values. The first is the source,
-     * the second is the destination, and the optional third
-     * is the weight.
-     * @param scan The buffered reader containing the data
-     * @throws IOException if an I/O error occurs
-     */
-    public void loadEdgesFromFile(Scanner scan) throws IOException;
 }

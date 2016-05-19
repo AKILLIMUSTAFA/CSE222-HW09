@@ -2,10 +2,7 @@ package tr.edu.gtu.mustafa.akilli.cse222.hw09;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * HW09_131044017_Mustafa_Akilli
@@ -81,6 +78,89 @@ public class MatrixGraph extends AbstractGraph {
     }
 
     /**
+     * Return null
+     *
+     * @param source The source vertex
+     * @return The source vertex of iterator
+     */
+    public Iterator<Edge> edgeIterator(int source) {
+        return new MatrixGraphIterator(source);
+    }
+
+    /**
+     * Inner class for Iterator
+     *
+     */
+    private class MatrixGraphIterator implements Iterator<Edge> {
+
+        Edge next;
+        int index;
+        int source;
+
+        public MatrixGraphIterator(int source){
+            index = 0;
+            this.source = source;
+            next = getEdge(source,index);
+        }
+
+        /**
+         * Returns {@code true} if the iteration has more elements.
+         * (In other words, returns {@code true} if {@link #next} would
+         * return an element rather than throwing an exception.)
+         *
+         * @return {@code true} if the iteration has more elements
+         */
+        public boolean hasNext() {
+
+            /*İf exist next element */
+            if(index < getNumV())
+                return true;
+            /*İf end of the array */
+            return false;
+        }
+
+        /**
+         * Returns the next element in the iteration.
+         *
+         * @return the next element in the iteration
+         * @throws NoSuchElementException if the iteration has no more elements
+         */
+        public Edge next() {
+
+            /*İf exist next element */
+            if(hasNext()) {
+                next = getEdge(this.source, index);
+                ++index;
+                return next;
+            }
+            /* otherwise throw exception */
+            else
+                throw new NoSuchElementException();
+        }
+
+        /**
+         * Removes from the underlying collection the last element returned
+         * by this iterator (optional operation).  This method can be called
+         * only once per call to {@link #next}.  The behavior of an iterator
+         * is unspecified if the underlying collection is modified while the
+         * iteration is in progress in any way other than by calling this
+         * method.
+         *
+         * @throws UnsupportedOperationException if the {@code remove}
+         *                                       operation is not supported by this iterator
+         * @throws IllegalStateException         if the {@code next} method has not
+         *                                       yet been called, or the {@code remove} method has already
+         *                                       been called after the last call to the {@code next}
+         *                                       method
+         * @implSpec The default implementation throws an instance of
+         * {@link UnsupportedOperationException} and performs no other action.
+         */
+        public void remove() {
+            //it is not necessary now
+        }
+    }
+
+    /**
      * Get Edges
      *
      * @return List Of Edges
@@ -153,8 +233,6 @@ public class MatrixGraph extends AbstractGraph {
                 break;
         }
 
-        System.out.println("Kendi: " + sourceNumber + "Komsu: " + destinationNumber + "Weight: " + weight + "*");
-
         return newEdge = new Edge(Integer.parseInt(String.valueOf(sourceNumber)),
                 Integer.parseInt(String.valueOf(destinationNumber)),
                 Integer.parseInt(String.valueOf(weight)));
@@ -186,8 +264,6 @@ public class MatrixGraph extends AbstractGraph {
 
         /* Until End of the Edges */
         while (line.compareTo("  </Edges>") != 0) {
-
-            System.out.println(line);
 
             /* Add element in the Linked List */
             insert(loadEdgesFromString(line));

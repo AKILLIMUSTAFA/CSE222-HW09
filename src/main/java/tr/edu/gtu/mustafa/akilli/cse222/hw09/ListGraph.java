@@ -36,10 +36,7 @@ public class ListGraph extends AbstractGraph {
     public ListGraph(int numberOfVertex, boolean directed) throws Exception {
         super(numberOfVertex, directed);
 
-        if (numberOfVertex > 0)
-            setListOfEdges(numberOfVertex);
-        else
-            throw new Exception();
+        edges = new List[numberOfVertex];
 
         for(int index = 0; index < numberOfVertex; ++index)
             this.edges[index] = new LinkedList<Edge>();
@@ -64,12 +61,11 @@ public class ListGraph extends AbstractGraph {
      */
     public Edge getEdge(int source, int destination){
         Edge target = new Edge(source,destination,Double.POSITIVE_INFINITY);
-
+        CompareEdges compareEdges = new CompareEdges();
         for(Edge edge : edges[source]){
-            if(edge.equals(target))
+            if(edge.getSource() == target.getSource() && edge.getDest() == target.getDest())
                 return edge; /* Desired edge found, return it */
         }
-
         return target; /* Desired edge not found*/
     }
 
@@ -80,10 +76,6 @@ public class ListGraph extends AbstractGraph {
      */
     public void insert(Edge edge){
         edges[edge.getSource()].add(edge);
-        if (isDirected()){
-            edges[edge.getDest()].add(new Edge(edge.getSource(),
-                    edge.getDest(),edge.getWeight()));
-        }
     }
 
     /**
@@ -102,7 +94,7 @@ public class ListGraph extends AbstractGraph {
      *
      * @return List Of Edges
      */
-    private List<Edge>[] getListOfEdges() {
+    public List<Edge>[] getListOfEdges() {
         return edges;
     }
 
@@ -170,8 +162,6 @@ public class ListGraph extends AbstractGraph {
                 break;
         }
 
-        System.out.println("Kendi: " + sourceNumber + "Komsu: " + destinationNumber + "Weight: " + weight + "*");
-
         return newEdge = new Edge(Integer.parseInt(String.valueOf(sourceNumber)),
                                 Integer.parseInt(String.valueOf(destinationNumber)),
                                     Integer.parseInt(String.valueOf(weight)));
@@ -203,8 +193,6 @@ public class ListGraph extends AbstractGraph {
 
         /* Until End of the Edges */
         while (line.compareTo("  </Edges>") != 0) {
-
-            System.out.println(line);
 
             /* Add element in the Linked List */
             insert(loadEdgesFromString(line));

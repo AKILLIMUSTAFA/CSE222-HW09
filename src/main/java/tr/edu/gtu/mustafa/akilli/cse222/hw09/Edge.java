@@ -13,7 +13,7 @@ import java.util.Objects;
  * Edge
  *
  * @author Mustafa_Akilli
- * @since Sunday 19 May 2016 by Mustafa_Akilli
+ * @since Tuesday 19 May 2016 by Mustafa_Akilli
  */
 public class Edge{
 

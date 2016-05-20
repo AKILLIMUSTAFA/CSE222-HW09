@@ -25,6 +25,7 @@ public class TestScenario {
         long endTime; /* For The End Time */
         long timeofExe; /* For The Time of Execute */
 
+        ListGraph listGraphs10Directed = new ListGraph(11, true);
         ListGraph listGraphs10 = new ListGraph(11, false);
         ListGraph listGraphs50 = new ListGraph(51, false);
         ListGraph listGraphs100 = new ListGraph(101, false);
@@ -50,17 +51,15 @@ public class TestScenario {
         double[] dist1001 = new double[1001];
 
 
-        listGraphs10.createGraphFromFile("Chapter2.xml");
+        listGraphs10Directed.createGraphFromFile("Chapter2.xml");
         System.out.println("Chapter2");
-        FindPath findPath = new FindPath(listGraphs10);
+        FindPath findPath = new FindPath(listGraphs10Directed);
 
         System.out.println("Longest Connected Components: " + findPath.findLongestConnectedComponentsInGraph());
         System.out.println("---------------");
         System.out.println("Smallest Connected Components: " + findPath.findSmallestConnectedComponentsInGraph());
         System.out.println("---------------");
 
-
-        /*
 
         System.out.println("The graph ADT implemented using adjacency list, Algorithm Of Dijkstra: \n");
 
@@ -233,7 +232,7 @@ public class TestScenario {
         }
 
         System.out.println("\n********************************\n");
-
+/*
         {
             listGraphs1000.createGraphFromFile("V1000-S0.2-XML.xml");
             System.out.println("Vertex: 1000 S: 0.2 ");
@@ -273,7 +272,7 @@ public class TestScenario {
             timeofExe = endTime - startTime;
             System.out.println("Time of Exe : " + timeofExe + "ms\n");
         }
-
+*/
         System.out.println("The graph ADT implemented using adjacency matrix, Algorithm Of Dijkstra: \n");
 
         {
@@ -444,7 +443,7 @@ public class TestScenario {
         }
 
         System.out.println("\n********************************\n");
-
+/*
         {
             matrixGraph1000.createGraphFromFile("V1000-S0.2-XML.xml");
             System.out.println("Vertex: 1000 S: 0.2 ");
@@ -484,7 +483,7 @@ public class TestScenario {
             timeofExe = endTime - startTime;
             System.out.println("Time of Exe : " + timeofExe + "ms\n");
         }
-
+*/
         System.out.println("The graph ADT implemented using adjacency list, Algorithm Of Prim: \n");
 
         {
@@ -670,7 +669,7 @@ public class TestScenario {
         }
 
         System.out.println("\n********************************\n");
-
+/*
         {
             listGraphs1000.createGraphFromFile("V1000-S0.2-XML.xml");
             System.out.println("Vertex: 1000 S: 0.2 ");
@@ -714,7 +713,7 @@ public class TestScenario {
             timeofExe = endTime - startTime;
             System.out.println("Time of Exe : " + timeofExe + "ms\n");
         }
-
+*/
         System.out.println("The graph ADT implemented using adjacency matrix, Algorithm Of Prim: \n");
 
         {
@@ -900,7 +899,7 @@ public class TestScenario {
         }
 
         System.out.println("\n********************************\n");
-
+/*
         {
             matrixGraph1000.createGraphFromFile("V1000-S0.2-XML.xml");
             System.out.println("Vertex: 1000 S: 0.2 ");
@@ -943,9 +942,7 @@ public class TestScenario {
             endTime = System.currentTimeMillis();
             timeofExe = endTime - startTime;
             System.out.println("Time of Exe : " + timeofExe + "ms\n");
-        }*/
-
-
-
+        }
+*/
     }
 }

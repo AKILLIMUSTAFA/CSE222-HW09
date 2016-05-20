@@ -14,20 +14,12 @@
   </Vertices>
   <Edges>
     <Edge Name="e1" V1="v1" V2="v4" Weight="983" />
-    <Edge Name="e1" V1="v4" V2="v1" Weight="983" />
     <Edge Name="e2" V1="v4" V2="v6" Weight="923" />
-    <Edge Name="e2" V1="v6" V2="v4" Weight="923" />
     <Edge Name="e3" V1="v6" V2="v5" Weight="88" />
-    <Edge Name="e3" V1="v5" V2="v6" Weight="88" />
     <Edge Name="e4" V1="v5" V2="v9" Weight="552" />
-    <Edge Name="e4" V1="v9" V2="v5" Weight="552" />
     <Edge Name="e5" V1="v9" V2="v7" Weight="175" />
-    <Edge Name="e5" V1="v7" V2="v9" Weight="175" />
     <Edge Name="e6" V1="v7" V2="v8" Weight="482" />
-    <Edge Name="e6" V1="v8" V2="v7" Weight="482" />
     <Edge Name="e9" V1="v2" V2="v10" Weight="265" />
-    <Edge Name="e9" V1="v10" V2="v2" Weight="265" />
     <Edge Name="e9" V1="v10" V2="v3" Weight="265" />
-    <Edge Name="e9" V1="v3" V2="v10" Weight="265" />
   </Edges>
 </Graph>

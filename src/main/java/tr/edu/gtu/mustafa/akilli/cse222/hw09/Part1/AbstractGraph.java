@@ -1,7 +1,4 @@
-package tr.edu.gtu.mustafa.akilli.cse222.hw09;
-
-import java.io.IOException;
-import java.util.Scanner;
+package tr.edu.gtu.mustafa.akilli.cse222.hw09.Part1;
 
 /**
  * Abstract base class for graphs. A graph is a set

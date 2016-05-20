@@ -1,10 +1,23 @@
 package tr.edu.gtu.mustafa.akilli.cse222.hw09;
 
 
-import java.util.ArrayList;
+import tr.edu.gtu.mustafa.akilli.cse222.hw09.Chapter2.FindPath;
+import tr.edu.gtu.mustafa.akilli.cse222.hw09.Part1.AlgorithmOfDijkstra;
+import tr.edu.gtu.mustafa.akilli.cse222.hw09.Part1.AlgorithmOfPrim;
+import tr.edu.gtu.mustafa.akilli.cse222.hw09.Part1.ListGraph;
+import tr.edu.gtu.mustafa.akilli.cse222.hw09.Part1.MatrixGraph;
 
 /**
- * Hello world!
+ * HW09_131044017_Mustafa_Akilli
+ *
+ * File:   TestScenario
+ *
+ * Description:
+ *
+ * Test Scenario
+ *
+ * @author Mustafa_Akilli
+ * @since Tuesday 19 May 2016 by Mustafa_Akilli
  */
 public class TestScenario {
     public static void main(String[] args) throws Exception {
@@ -36,6 +49,18 @@ public class TestScenario {
         int[] pred1001 = new int[1001];
         double[] dist1001 = new double[1001];
 
+
+        listGraphs10.createGraphFromFile("Chapter2.xml");
+        System.out.println("Chapter2");
+        FindPath findPath = new FindPath(listGraphs10);
+
+        System.out.println("Longest Connected Components: " + findPath.findLongestConnectedComponentsInGraph());
+        System.out.println("---------------");
+        System.out.println("Smallest Connected Components: " + findPath.findSmallestConnectedComponentsInGraph());
+        System.out.println("---------------");
+
+
+        /*
 
         System.out.println("The graph ADT implemented using adjacency list, Algorithm Of Dijkstra: \n");
 
@@ -918,6 +943,9 @@ public class TestScenario {
             endTime = System.currentTimeMillis();
             timeofExe = endTime - startTime;
             System.out.println("Time of Exe : " + timeofExe + "ms\n");
-        }
+        }*/
+
+
+
     }
 }

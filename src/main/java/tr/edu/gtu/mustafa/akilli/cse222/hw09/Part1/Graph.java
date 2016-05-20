@@ -1,8 +1,6 @@
-package tr.edu.gtu.mustafa.akilli.cse222.hw09;
+package tr.edu.gtu.mustafa.akilli.cse222.hw09.Part1;
 
-import java.io.IOException;
 import java.util.Iterator;
-import java.util.Scanner;
 
 /**
  * HW09_131044017_Mustafa_Akilli

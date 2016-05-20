@@ -1,7 +1,6 @@
-package tr.edu.gtu.mustafa.akilli.cse222.hw09;
+package tr.edu.gtu.mustafa.akilli.cse222.hw09.Part1;
 
 import java.util.HashMap;
-import java.util.Objects;
 
 /**
  * HW09_131044017_Mustafa_Akilli
